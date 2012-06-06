@@ -198,23 +198,24 @@ class Directus_Tables_Controller extends Directus_Controller {
 			{
 				$db = DB::table($table)->where_id($id);
 
-				if($action == 'stay')
-				{
-					$db->update($input);
-
-					return Redirect::to('directus/table/'.$table.'/edit/'.$id);
-				}
-
-				if($action == 'add')
-				{
-					$db->update($input);
-
-					return Redirect::to('directus/table/'.$table.'/add');
-				}
-
 				if($action == 'delete')
 				{
 					$db->delete();
+				}
+
+				else
+				{
+					$db->update($input);
+
+					if($action == 'stay')
+					{
+						return Redirect::to('directus/table/'.$table.'/edit/'.$id);
+					}
+
+					if($action == 'add')
+					{
+						return Redirect::to('directus/table/'.$table.'/add');
+					}	
 				}
 			}
 		}

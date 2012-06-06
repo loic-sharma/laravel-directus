@@ -38,6 +38,13 @@ View::composer('directus::tables.table', function($view)
 
 	$view->with('transcribe', function($type, $value)
 	{
+		list($type, $length) = Directus\Database::field_info($type);
+
+		if($type == 'tinyint')
+		{
+			return Form::checkbox(null, null, $value, array('disabled' => 'disabled'));
+		}
+
 		if($type == 'date')
 		{
 			return ($value == '0000-00-00') ? 'No date' : date('M j, Y', strtotime($value));
