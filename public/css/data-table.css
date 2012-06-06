@@ -1,0 +1,42 @@
+.paginate_disabled_previous, .paginate_disabled_next
+{
+	display: none;
+}
+
+#data-table .dataTables_length, #data-table .data-table_filter {
+	display: inline;
+}
+
+div#data-table_length.dataTables_length, div#data-table_filter.dataTables_filter {
+	background-color: blue;
+}
+
+div#data-table_length.dataTables_length label, div#data-table_info.dtaTables_info {
+	float: left;
+}
+
+div#data-table_filter.dataTables_filter label {
+	float: right;
+}
+
+div#data-table_info.dataTables_info {
+	margin-top: 5px;
+}
+
+div#data-table_paginate.dataTables_paginate.paging_two_button
+{
+	font-size: 15px;
+	text-decoration: none;
+	position: relative;
+	float: right;
+	top: -15px;
+}
+
+a#data-table_previous.paginate_enabled_previous {
+	margin-right: 15px;
+}
+
+a#data-table_previous.paginate_enabled_previous, a#data-table_next.paginate_enabled_next {
+	text-decoration: none;
+	cursor: pointer;
+}
