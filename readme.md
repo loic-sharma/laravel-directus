@@ -6,7 +6,7 @@ Directus is a free and open source content management framework written in PHP t
 
 ## Feature Overview
 
-- Full MySQL database backups within the CMS.
+- Full MySQL database backups within the CMS
 - Revert to any previous saves with item revisions
 - Supports Gravatar
 - Simple and easy to understand interfaces
