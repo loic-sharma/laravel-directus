@@ -1,4 +1,4 @@
-# [Laravel](http://getdirectus.com). Awesome content management framework for everyone!
+# [Directus](http://getdirectus.com). Awesome content management framework for everyone!
 
 Directus is a free and open source content management framework written in PHP that provides a feature-rich environment for rapid development and management of custom MySQL database solutions.
 
