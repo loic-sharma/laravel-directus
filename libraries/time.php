@@ -11,99 +11,36 @@ class Time {
 	 */
 	public static function ago($start, $end = null)
 	{
-		// Todo, remake this
-		$timestamp = time();
-
 		if(is_null($end))
 		{
-			$end = $timestamp;
+			$end = time();
 		}
 
-		$n = $end - $start;
+		$seconds = $end - $start;
 
-		if($n == 0)
+		$times = array(
+			'year'   => $seconds / 31556926,
+			'week'   => $seconds / 604800,
+			'day'    => $seconds / 86400,
+			'hour'   => $seconds / 3600,
+			'minute' => $seconds / 60,
+			'second' => $seconds,
+		);
+
+		foreach($times as $key => $value)
 		{
-			return 'Just now';
+			if($value > 1)
+			{
+				return $value.' '.$key . 's ago';
+			}
+
+			if($value == 1)
+			{
+				return $value.' '.$key.' ago';
+			}
 		}
 
-		if($n < 60) 
-		{
-			return $n . ' second' . ($n > 1 ? 's' : '') . ' ago';
-		}
-
-		if($n < (60*60))
-		{
-			$minutes = round($n / 60);
-
-			return $minutes . ' minute' . ($minutes > 1 ? 's' : '') . ' ago';
-		}
-
-		if($n < (60*60*16))
-		{
-			$hours = round($n/(60*60));
-
-			return $hours . ' hour' . ($hours > 1 ? 's' : '') . ' ago';
-		}
-
-		if($n < ($timestamp - strtotime('yesterday')))
-		{
-			return 'Yesterday';
-		}
-
-		if($n < (60*60*24))
-		{
-			$hours = round($n / (60*60));
-
-			return $hours . ' hour' . ($hours > 1 ? 's' : '') . ' ago';
-		}
-
-		if($n < (60*60*24*7))
-		{
-			$days = round($n / (60*60*24));
-
-			return $days . ' day' . ($days > 1 ? 's' : '') . ' ago';
-		}
-	
-		if($n < ($timestamp - strtotime('last week')))
-		{
-			return 'Last week';
-		}
-
-		if($n < (60*60*24*7*4))
-		{
-			$weeks = round($n/(60*60*24*7));
-
-			return 'About ' . $weeks . ' week' . ($weeks > 1 ? 's' : '') . ' ago';
-		}
-
-		if($n < ($timestamp - strtotime('last month')))
-		{
-			return 'Last month';
-		}
-
-		if($n < (60*60*24*7*4*12))
-		{
-			$months = round($n/(60*60*24*7*4));
-
-			return $months . ' month' . ($months > 1 ? 's' : '') . ' ago';
-		}
-
-		if($n < ($timestamp - strtotime('last year')))
-		{
-			return 'Last year';
-		}
-
-		if($n >= (60*60*24*7*4*12*10))
-		{
-			return 'decades ago';
-		}
-
-		if($n >= (60*60*24*7*4*12))
-		{
-			$years = round($n/(60*60*24*7*4*12));
-
-			return $years . ' year' . ($years > 1 ? 's' : '') . ' ago';
-		}
+		return 'Just now';
 	}
 
 	/**
